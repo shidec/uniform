@@ -128,7 +128,14 @@ Enjoy!
             if(elem[0].dispatchEvent){
               var ev = document.createEvent('MouseEvents');
               ev.initEvent( 'click', true, true );
-              elem[0].dispatchEvent(ev);
+              var res = elem[0].dispatchEvent(ev);
+			  if($el.is('a') && res){
+				if($el.attr('target')=='' || $el.attr('target')=='_self'){
+					 document.location.href = $el.attr('href');
+				}else{
+					window.open($el.attr('href'),$el.attr('target'));
+				}
+			  }
             }else{
               elem[0].click();
             }
