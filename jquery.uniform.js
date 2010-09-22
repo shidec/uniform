@@ -129,7 +129,7 @@ Enjoy!
               var ev = document.createEvent('MouseEvents');
               ev.initEvent( 'click', true, true );
               var res = elem[0].dispatchEvent(ev);
-			  if($el.is('a') && res){
+			  if((jQuery.browser.msie || jQuery.browser.mozilla) && $el.is('a') && res){
 				if($el.attr('target')=='' || $el.attr('target')=='_self'){
 					 document.location.href = $el.attr('href');
 				}else{
